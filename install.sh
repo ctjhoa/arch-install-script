@@ -228,7 +228,7 @@ for entry in "${array[@]}"; do
 	cd /tmp
 	cower -d $entry
 	chown $username $entry -R
-	su - $username -c "cd /tmp/$entry makepkg -s"
+	su - $username -c "cd /tmp/$entry && makepkg -s"
 	pacman --noconfirm -U $entry/*.tar.xz
 	rm $entry
 done
