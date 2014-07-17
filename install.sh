@@ -224,9 +224,13 @@ array+=( numix-themes moka-icons-git )
 # Install others
 array+=( libreoffice-extension-languagetool )
 
-su - $username -c "sudo -v"
 for entry in "${array[@]}"; do
-  su - $username -c "pacaur --noconfirm -S $entry"
+	cd /tmp
+	cower -d $entry
+	chown $username $entry -R
+	su - $username -c "cd /tmp/$entry makepkg -s"
+	pacman --noconfirm -U $entry/*.tar.xz
+	rm $entry
 done
 
 echo "
