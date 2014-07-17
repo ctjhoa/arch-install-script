@@ -192,7 +192,7 @@ useradd -m --groups users,wheel $username
 echo "$username:$password" | chpasswd
 chsh -s /bin/zsh $username
 
-# Add sudo rights
+# Add sudo no password rights
 sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 
 # Install pacaur
@@ -200,14 +200,19 @@ cd /tmp
 curl -OL https://aur.archlinux.org/packages/co/cower/cower.tar.gz
 tar -xzf cower.tar.gz
 cd /tmp/cower
-chown $username . -R
+chown $username cower -R
 sudo -u $username makepkg -s
-pacman --noconfirm -U *.tar.xz
+pacman --noconfirm -U cower/*.tar.xz
+
+cower -d pacaur
+chown $username pacaur -R
+sudo -u $username makepkg -s
+pacman --noconfirm -U pacaur/*.tar.xz
 
 array=()
 
 # Install utilities
-array+=( compton-git pacaur )
+array+=( compton-git )
 
 # Install basic fonts
 array+=( ttf-ms-fonts ttf-vista-fonts ttf-google-fonts-git ttf-chromeos-fonts )
@@ -224,59 +229,31 @@ array+=( numix-themes moka-icons-git )
 # Install others
 array+=( libreoffice-extension-languagetool )
 
-for entry in "${array[@]}"; do
-	cd /tmp
-	cower -d $entry
-	chown $username $entry -R
-	su - $username -c "cd /tmp/$entry && makepkg -s"
-	pacman --noconfirm -U $entry/*.tar.xz
-	rm $entry
-done
-
-# Remove no password sudo rights
-sed -i 's/^%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
-sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+sudo -u $username pacaur --noconfirm --noedit -S ${array[@]}
 
 echo "
 ###############################################################################
 # Git config part
 ###############################################################################
 "
-echo "[user]
-        name = $fullname
-        email = $email
-[core]
-        editor = vim
-[alias]
-        st = status
-        ci = commit
-        co = checkout
-        br = branch -vv
-        sl = log --graph --pretty=oneline --abbrev-commit --decorate
-        up = pull --rebase
-[color]
-        branch = auto
-        diff = auto
-        interactive = auto
-        status = auto" > ~$username/.gitconfig
-## Info
-#su - $username -c "git config --global user.name \"$fullname\"" 
-#su - $username -c "git config --global user.email \"$email\""
-#su - $username -c "git config --global core.editor \"vim\""
-#
-## Alias
-#su - $username -c "git config --global alias.st status"
-#su - $username -c "git config --global alias.ci commit"
-#su - $username -c "git config --global alias.co checkout"
-#su - $username -c "git config --global alias.br branch"
-#su - $username -c "git config --global alias.sl \"log --graph --pretty=oneline --abbrev-commit --decorate\""
-#su - $username -c "git config --global alias.up \"pull --rebase\""
-#
-## Color
-#su - $username -c "git config --global color.branch auto"
-#su - $username -c "git config --global color.diff auto"
-#su - $username -c "git config --global color.interactive auto"
-#su - $username -c "git config --global color.status auto"
+# Info
+sudo -u $username git config --global user.name "$fullname"
+sudo -u $username git config --global user.email "$email"
+sudo -u $username git config --global core.editor "vim"
+
+# Alias
+sudo -u $username git config --global alias.st status
+sudo -u $username git config --global alias.ci commit
+sudo -u $username git config --global alias.co checkout
+sudo -u $username git config --global alias.br branch
+sudo -u $username git config --global alias.sl "log --graph --pretty=oneline --abbrev-commit --decorate"
+sudo -u $username git config --global alias.up "pull --rebase"
+
+# Color
+sudo -u $username git config --global color.branch auto
+sudo -u $username git config --global color.diff auto
+sudo -u $username git config --global color.interactive auto
+sudo -u $username git config --global color.status auto
 
 echo "
 ###############################################################################
@@ -287,20 +264,25 @@ echo "
 cd ~$username
 
 # Dotfiles
-git clone git@github.com:ctjhoa/dotfiles.git
-dotfiles/install.sh
+sudo -u $username git clone git@github.com:ctjhoa/dotfiles.git
+sudo -u $username dotfiles/install.sh
 
 # Dwm (Dynamic Window Manager - suckless)
-git clone git@github.com:ctjhoa/dwm.git
-dwm/install.sh
+sudo -u $username git clone git@github.com:ctjhoa/dwm.git
+sudo -u $username dwm/install.sh
 
 # St (Simple terminal - suckless)
-git clone git@github.com:ctjhoa/st.git
-st/install.sh
+sudo -u $username git clone git@github.com:ctjhoa/st.git
+sudo -u $username st/install.sh
 
 echo "
 ###############################################################################
 # Done
 ###############################################################################
 "
+# Remove no password sudo rights
+sed -i 's/^%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
+# Add sudo rights
+sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+
 cd $pwd
