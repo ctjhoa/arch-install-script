@@ -119,7 +119,7 @@ array+=( ttf-ubuntu-font-family ttf-freefont ttf-liberation ttf-dejavu )
 array+=( adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts )
 array+=( dina-font terminus-font tamsyn-font artwiz-fonts )
 
-pacman --noconfirm -S  ${array[@]}
+pacman --noconfirm --needed -S  ${array[@]}
 
 chsh -s /bin/zsh
 
