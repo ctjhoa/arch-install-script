@@ -193,7 +193,7 @@ echo "$username:$password" | chpasswd
 chsh -s /bin/zsh $username
 
 # Add sudo rights
-sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) NOPASSWD:ALL/' /etc/sudoers
 
 # Install pacaur
 cd /tmp
@@ -232,6 +232,9 @@ for entry in "${array[@]}"; do
 	pacman --noconfirm -U $entry/*.tar.xz
 	rm $entry
 done
+
+# Remove no password sudo rights
+sed -i 's/^%wheel ALL=(ALL) NOPASSWD:ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
 echo "
 ###############################################################################
