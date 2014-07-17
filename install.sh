@@ -19,7 +19,7 @@ fi
 
 echo "
 You're about to install my basic user session.
-Require a xf86-video driver and an internet connection.
+Require a xf86-video driver, an internet connection, base and base-devel packages.
 Please enter 'yes' to confirm:
 "
 read yes
@@ -90,33 +90,34 @@ echo "
 # Sync
 pacman --noconfirm -Syu
 
+array=()
+
 # Install X essentials
-pacman --noconfirm -S xorg-server xorg-server-utils xorg-xinit dbus
+array+=( xorg-server xorg-server-utils xorg-xinit dbus )
 
 # Install admin tools
-pacman --noconfirm -S git zsh grml-zsh-config tmux reflector
-chsh -s /bin/zsh
+array+=( git zsh grml-zsh-config tmux reflector )
 
 # Install window manager
-pacman --noconfirm -S awesome slock
+array+=( awesome slock )
 
 # Install dev tools
-pacman --noconfirm -S vim emacs
+array+=( vim emacs )
 
 # Install requirements for pacaur
-pacman --noconfirm -S sudo expac
+array+=( sudo expac )
 
 # Install audio
-pacman --noconfirm -S alsa-utils
+array+=( alsa-utils )
 
 # Install useful apps
-pacman --noconfirm -S keepass vlc gimp firefox scribus rtorrent
-pacman --noconfirm -S libreoffice-writer libreoffice-calc libreoffice-impress
+array+=( keepass vlc gimp firefox scribus rtorrent )
+array+=( libreoffice-writer libreoffice-calc libreoffice-impress )
 
 # Install fonts
-pacman --noconfirm -S ttf-ubuntu-font-family ttf-freefont ttf-liberation ttf-dejavu
-pacman --noconfirm -S adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts
-pacman --noconfirm -S dina-font terminus-font tamsyn-font
+array+=( ttf-ubuntu-font-family ttf-freefont ttf-liberation ttf-dejavu )
+array+=( adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts )
+array+=( dina-font terminus-font tamsyn-font artwiz-fonts )
 
 # Install infinality bundle
 echo '
@@ -136,6 +137,12 @@ vboxsf
 vboxvideo
 " > /etc/modules-load.d/virtualbox.conf
 fi
+
+for entry in "${array[@]}"; do
+  pacman --noconfirm -S  $entry
+done
+
+chsh -s /bin/zsh
 
 echo "
 ###############################################################################
@@ -219,13 +226,9 @@ array+=( numix-themes moka-icons-git )
 # Install others
 array+=( libreoffice-extension-languagetool )
 
+su - $username -c "sudo -v"
 for entry in "${array[@]}"; do
-  cd /tmp
-  cower -d $entry
-  cd $entry
-  chown $username . -R
-  sudo -u $username makepkg -s
-  pacman --noconfirm -U *.tar.xz
+  su - $username -c "pacaur --noconfirm -S $entry"
 done
 
 echo "
