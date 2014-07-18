@@ -5,7 +5,7 @@
 set -euo pipefail
 IFS=$'\n\t' 
 
-if [ "$1" = "--debug" ] || [ "$1" = "-d" ]; then
+if [ "${1:-}" = "--debug" ] || [ "${1:-}" = "-d" ]; then
 	set -x
 fi
 
