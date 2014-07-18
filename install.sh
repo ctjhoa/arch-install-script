@@ -2,7 +2,8 @@
 
 # Stop on error
 # To silent an error || true
-set -e
+set -euo pipefail
+IFS=$'\n\t' 
 
 if [ "$1" = "--debug" ] || [ "$1" = "-d" ]; then
 	set -x
@@ -199,15 +200,17 @@ sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /et
 cd /tmp
 curl -OL https://aur.archlinux.org/packages/co/cower/cower.tar.gz
 tar -xzf cower.tar.gz
-cd /tmp/cower
 chown $username cower -R
+cd cower
 sudo -u $username makepkg -s
-pacman --noconfirm -U cower/*.tar.xz
+pacman --noconfirm -U *.tar.xz
 
+cd /tmp
 cower -d pacaur
 chown $username pacaur -R
+cd pacaur
 sudo -u $username makepkg -s
-pacman --noconfirm -U pacaur/*.tar.xz
+pacman --noconfirm -U *.tar.xz
 
 array=()
 
