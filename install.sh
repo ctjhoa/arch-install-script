@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Stop on error
+# see http://redsymbol.net/articles/unofficial-bash-strict-mode/
 # To silent an error || true
 set -euo pipefail
 IFS=$'\n\t' 
@@ -264,7 +264,7 @@ echo "
 ###############################################################################
 "
 # Go home
-cd ~$username
+cd `eval echo ~$username`
 
 # Dotfiles
 sudo -u $username git clone git@github.com:ctjhoa/dotfiles.git
