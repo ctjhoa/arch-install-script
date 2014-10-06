@@ -267,15 +267,15 @@ echo "
 cd `eval echo ~$username`
 
 # Dotfiles
-sudo -u $username git clone git@github.com:ctjhoa/dotfiles.git
+sudo -u $username git clone https://github.com/ctjhoa/dotfiles.git
 sudo -u $username dotfiles/install.sh
 
 # Dwm (Dynamic Window Manager - suckless)
-sudo -u $username git clone git@github.com:ctjhoa/dwm.git
+sudo -u $username git clone https://github.com/ctjhoa/dwm.git
 sudo -u $username dwm/install.sh
 
 # St (Simple terminal - suckless)
-sudo -u $username git clone git@github.com:ctjhoa/st.git
+sudo -u $username git clone https://github.com/ctjhoa/st.git
 sudo -u $username st/install.sh
 
 echo "
