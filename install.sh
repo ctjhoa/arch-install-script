@@ -125,6 +125,9 @@ pacman --noconfirm --needed -S  ${array[@]}
 chsh -s /bin/zsh
 
 # Install infinality bundle
+if grep --quiet infinality-bundle /etc/pacman.conf; then
+	echo 'infinality-bundle already install'
+else
 echo '
 [infinality-bundle]
 Server = http://bohoomil.com/repo/$arch' >> /etc/pacman.conf
@@ -133,6 +136,7 @@ pacman-key --lsign-key 962DDE58
 pacman --noconfirm -Syu
 pacman --noconfirm -Rdd cairo fontconfig freetype2
 pacman --noconfirm -S infinality-bundle
+fi
 
 # Install vbox guest addition
 if [ "$yes_vbox" != "yes" ]; then
