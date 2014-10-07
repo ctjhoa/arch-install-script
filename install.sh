@@ -116,8 +116,8 @@ array+=( keepass vlc gimp firefox scribus rtorrent )
 array+=( libreoffice-writer libreoffice-calc libreoffice-impress )
 
 # Install fonts
-array+=( ttf-ubuntu-font-family ttf-freefont ttf-liberation ttf-dejavu )
-array+=( adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts )
+array+=( ttf-freefont ttf-liberation ttf-dejavu )
+array+=( adobe-source-serif-pro-fonts )
 array+=( dina-font terminus-font tamsyn-font artwiz-fonts )
 
 pacman --noconfirm --needed -S  ${array[@]}
@@ -125,9 +125,7 @@ pacman --noconfirm --needed -S  ${array[@]}
 chsh -s /bin/zsh
 
 # Install infinality bundle
-if grep --quiet infinality-bundle /etc/pacman.conf; then
-	echo 'infinality-bundle already install'
-else
+if ! grep --quiet infinality-bundle /etc/pacman.conf; then
 echo '
 [infinality-bundle]
 Server = http://bohoomil.com/repo/$arch' >> /etc/pacman.conf
@@ -193,9 +191,7 @@ echo "
 ###############################################################################
 "
 # Create user with home
-if id -u $username; then
-	echo 'user already exist'
-else
+if ! id -u $username; then
 	useradd -m --groups users,wheel $username
 	echo "$username:$password" | chpasswd
 	chsh -s /bin/zsh $username
@@ -205,20 +201,24 @@ fi
 sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 
 # Install pacaur
-cd /tmp
-curl -OL https://aur.archlinux.org/packages/co/cower/cower.tar.gz
-tar -xzf cower.tar.gz
-chown $username cower -R
-cd cower
-sudo -u $username makepkg -s
-pacman --noconfirm -U *.tar.xz
+if ! command -v cower; then
+	cd /tmp
+	curl -OL http://aur.archlinux.org/packages/co/cower/cower.tar.gz
+	tar -xzf cower.tar.gz
+	chown $username cower -R
+	cd cower
+	sudo -uE $username makepkg -s
+	pacman --noconfirm -U *.tar.xz
+fi
 
-cd /tmp
-cower -d pacaur
-chown $username pacaur -R
-cd pacaur
-sudo -u $username makepkg -s
-pacman --noconfirm -U *.tar.xz
+if ! command -v pacaur; then
+	cd /tmp
+	cower -d pacaur
+	chown $username pacaur -R
+	cd pacaur
+	sudo -uE $username makepkg -s
+	pacman --noconfirm -U *.tar.xz
+fi
 
 array=()
 
@@ -240,31 +240,30 @@ array+=( numix-themes moka-icons-git )
 # Install others
 array+=( libreoffice-extension-languagetool )
 
-sudo -u $username pacaur --noconfirm --noedit -S ${array[@]}
+sudo -uE $username pacaur --noconfirm --noedit -S ${array[@]}
 
 echo "
 ###############################################################################
 # Git config part
 ###############################################################################
 "
-# Info
-sudo -u $username git config --global user.name "$fullname"
-sudo -u $username git config --global user.email "$email"
-sudo -u $username git config --global core.editor "vim"
-
-# Alias
-sudo -u $username git config --global alias.st status
-sudo -u $username git config --global alias.ci commit
-sudo -u $username git config --global alias.co checkout
-sudo -u $username git config --global alias.br branch
-sudo -u $username git config --global alias.sl "log --graph --pretty=oneline --abbrev-commit --decorate"
-sudo -u $username git config --global alias.up "pull --rebase"
-
-# Color
-sudo -u $username git config --global color.branch auto
-sudo -u $username git config --global color.diff auto
-sudo -u $username git config --global color.interactive auto
-sudo -u $username git config --global color.status auto
+echo "[user]
+	name = $fullname
+	email = $email
+[core]
+	editor = vim
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch -vv
+	sl = log --graph --pretty=oneline --abbrev-commit --decorate
+	up = pull --rebase
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto" > ~$username/.gitconfig
 
 echo "
 ###############################################################################
@@ -275,16 +274,16 @@ echo "
 cd `eval echo ~$username`
 
 # Dotfiles
-sudo -u $username git clone https://github.com/ctjhoa/dotfiles.git
-sudo -u $username dotfiles/install.sh
+sudo -uE $username git clone http://github.com/ctjhoa/dotfiles.git
+sudo -uE $username dotfiles/install.sh
 
 # Dwm (Dynamic Window Manager - suckless)
-sudo -u $username git clone https://github.com/ctjhoa/dwm.git
-sudo -u $username dwm/install.sh
+sudo -uE $username git clone http://github.com/ctjhoa/dwm.git
+sudo -uE $username dwm/install.sh
 
 # St (Simple terminal - suckless)
-sudo -u $username git clone https://github.com/ctjhoa/st.git
-sudo -u $username st/install.sh
+sudo -uE $username git clone http://github.com/ctjhoa/st.git
+sudo -uE $username st/install.sh
 
 echo "
 ###############################################################################
