@@ -38,35 +38,38 @@ if ! [ "$(ping -c 1 8.8.8.8)" ]; then
     exit 1
 fi
 
-echo "
-Virtual box install?
-Please enter 'yes' to confirm, 'no' to reject:
-"
-read yes_vbox
+if ! source install.conf; then
+	echo "
+	Virtual box install?
+	Please enter 'yes' to confirm, 'no' to reject:
+	"
+	read vbox_install
 
-echo "Please enter hostname:"
-read hostname
+	echo "Please enter hostname:"
+	read hostname
 
-echo "Please enter username:"
-read username
+	echo "Please enter username:"
+	read username
 
-echo "Please enter password:"
-read -s password
+	echo "Please enter password:"
+	read -s password
 
-echo "Please repeat password:"
-read -s password2
+	echo "Please repeat password:"
+	read -s password2
 
-# Check both passwords match
-if [ "$password" != "$password2" ]; then
-    echo "Passwords do not match"
-    exit 1
+	# Check both passwords match
+	if [ "$password" != "$password2" ]; then
+	    echo "Passwords do not match"
+	    exit 1
+	fi
+
+	echo "Please enter full name:"
+	read fullname
+
+	echo "Please enter email:"
+	read email
 fi
 
-echo "Please enter full name:"
-read fullname
-
-echo "Please enter email:"
-read email
 
 # Save current pwd
 pwd=`pwd`
@@ -247,6 +250,10 @@ echo "
 # Git config part
 ###############################################################################
 "
+
+# Go home
+cd `eval echo ~$username`
+
 echo "[user]
 	name = $fullname
 	email = $email
@@ -270,8 +277,6 @@ echo "
 # My git repos
 ###############################################################################
 "
-# Go home
-cd `eval echo ~$username`
 
 # Dotfiles
 sudo -Eu $username git clone http://github.com/ctjhoa/dotfiles.git
