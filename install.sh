@@ -76,7 +76,7 @@ else
 	export http_proxy=$proxy
 	export https_proxy=$http_proxy
 	export ftp_proxy=$http_proxy
-	alias sudo="sudo env http_proxy=$http_proxy https_proxy=$https_proxy ftp_proxy=$ftp_proxy -u $username "
+	alias sudo="sudo -u $username env http_proxy=$http_proxy https_proxy=$https_proxy ftp_proxy=$ftp_proxy "
 fi
 
 
