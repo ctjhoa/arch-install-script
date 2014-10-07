@@ -193,9 +193,13 @@ echo "
 ###############################################################################
 "
 # Create user with home
-useradd -m --groups users,wheel $username
-echo "$username:$password" | chpasswd
-chsh -s /bin/zsh $username
+if id -u $username; then
+	echo 'user already exist'
+else
+	useradd -m --groups users,wheel $username
+	echo "$username:$password" | chpasswd
+	chsh -s /bin/zsh $username
+fi
 
 # Add sudo no password rights
 sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
