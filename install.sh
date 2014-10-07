@@ -140,7 +140,7 @@ pacman --noconfirm -S infinality-bundle
 fi
 
 # Install vbox guest addition
-if [ "$yes_vbox" != "yes" ]; then
+if [ "$vbox_install" != "yes" ]; then
 pacman --noconfirm -S virtualbox-guest-modules
 echo "vboxguest
 vboxsf
@@ -270,7 +270,7 @@ echo "[user]
 	branch = auto
 	diff = auto
 	interactive = auto
-	status = auto" > ~$username/.gitconfig
+	status = auto" > .gitconfig
 
 echo "
 ###############################################################################
