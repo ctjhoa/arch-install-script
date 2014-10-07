@@ -73,7 +73,10 @@ fi
 if [ -z "$proxy" ]; then
 	alias sudo="sudo -u $username "
 else
-	alias sudo="sudo env http_proxy=$proxy https_proxy=$http_proxy ftp_proxy=$http_proxy -u $username "
+	export http_proxy=$proxy
+	export https_proxy=$http_proxy
+	export ftp_proxy=$http_proxy
+	alias sudo="sudo env http_proxy=$http_proxy https_proxy=$https_proxy ftp_proxy=$ftp_proxy -u $username "
 fi
 
 
