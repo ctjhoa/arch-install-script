@@ -70,6 +70,12 @@ if ! source install.conf; then
 	read email
 fi
 
+if [ -z "$proxy" ]; then
+	alias sudo="sudo -u $username "
+else
+	alias sudo="sudo env http_proxy=$proxy https_proxy=$http_proxy ftp_proxy=$http_proxy -u $username "
+fi
+
 
 # Save current pwd
 pwd=`pwd`
@@ -210,7 +216,7 @@ if ! command -v cower; then
 	tar -xzf cower.tar.gz
 	chown $username cower -R
 	cd cower
-	sudo -Eu $username makepkg -s
+	sudo makepkg -s
 	pacman --noconfirm -U *.tar.xz
 fi
 
@@ -219,7 +225,7 @@ if ! command -v pacaur; then
 	cower -d pacaur
 	chown $username pacaur -R
 	cd pacaur
-	sudo -Eu $username makepkg -s
+	sudo makepkg -s
 	pacman --noconfirm -U *.tar.xz
 fi
 
@@ -243,7 +249,7 @@ array+=( numix-themes moka-icons-git )
 # Install others
 array+=( libreoffice-extension-languagetool )
 
-sudo -Eu $username pacaur --noconfirm --noedit -S ${array[@]}
+sudo pacaur --noconfirm --noedit -S ${array[@]}
 
 echo "
 ###############################################################################
@@ -279,16 +285,19 @@ echo "
 "
 
 # Dotfiles
-sudo -Eu $username git clone http://github.com/ctjhoa/dotfiles.git
-sudo -Eu $username dotfiles/install.sh
+rm -rf dotfiles
+sudo git clone http://github.com/ctjhoa/dotfiles.git
+sudo dotfiles/install.sh
 
 # Dwm (Dynamic Window Manager - suckless)
-sudo -Eu $username git clone http://github.com/ctjhoa/dwm.git
-sudo -Eu $username dwm/install.sh
+rm -rf dwm
+sudo git clone http://github.com/ctjhoa/dwm.git
+sudo dwm/install.sh
 
 # St (Simple terminal - suckless)
-sudo -Eu $username git clone http://github.com/ctjhoa/st.git
-sudo -Eu $username st/install.sh
+rm -rf st
+sudo git clone http://github.com/ctjhoa/st.git
+sudo st/install.sh
 
 echo "
 ###############################################################################
