@@ -112,7 +112,7 @@ array+=( xorg-server xorg-server-utils xorg-xinit dbus )
 array+=( git zsh grml-zsh-config tmux reflector openssh )
 
 # Install window manager
-array+=( awesome slock )
+array+=( awesome slock dmenu )
 
 # Install dev tools
 array+=( vim emacs )
@@ -289,17 +289,17 @@ echo "
 
 # Dotfiles
 rm -rf dotfiles
-sudo git clone http://github.com/ctjhoa/dotfiles.git
+sudo git clone https://github.com/ctjhoa/dotfiles.git
 sudo dotfiles/install.sh
 
 # Dwm (Dynamic Window Manager - suckless)
 rm -rf dwm
-sudo git clone http://github.com/ctjhoa/dwm.git
+sudo git clone https://github.com/ctjhoa/dwm.git
 sudo dwm/install.sh
 
 # St (Simple terminal - suckless)
 rm -rf st
-sudo git clone http://github.com/ctjhoa/st.git
+sudo git clone https://github.com/ctjhoa/st.git
 sudo st/install.sh
 
 echo "
