@@ -109,7 +109,7 @@ array=()
 array+=( xorg-server xorg-server-utils xorg-xinit dbus )
 
 # Install admin tools
-array+=( git zsh grml-zsh-config tmux reflector openssh )
+array+=( git zsh grml-zsh-config tmux openssh )
 
 # Install window manager
 array+=( awesome slock dmenu )
@@ -124,7 +124,7 @@ array+=( sudo expac )
 array+=( alsa-utils )
 
 # Install useful apps
-array+=( keepass vlc gimp firefox scribus rtorrent )
+array+=( keepass vlc gimp firefox scribus rtorrent weechat )
 array+=( libreoffice-writer libreoffice-calc libreoffice-impress )
 
 # Install fonts
@@ -307,6 +307,7 @@ echo "
 # Cleaning
 ###############################################################################
 "
+unalias sudo
 # Remove no password sudo rights
 sed -i 's/^%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 # Add sudo rights
