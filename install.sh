@@ -91,7 +91,7 @@ echo "
 # Rankmirrors
 pacman --noconfirm -S reflector
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-reflector -c France -f 10 --save /etc/pacman.d/mirrorlist
+reflector -c France -f 10 -p http --save /etc/pacman.d/mirrorlist
 
 sed -i 's/^#Color/Color/' /etc/pacman.conf
 
