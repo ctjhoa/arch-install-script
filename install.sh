@@ -124,7 +124,7 @@ array+=( sudo expac )
 array+=( alsa-utils )
 
 # Install useful apps
-array+=( keepass vlc gimp firefox scribus rtorrent weechat )
+array+=( keepass vlc gimp firefox scribus rtorrent weechat scrot )
 array+=( libreoffice-writer libreoffice-calc libreoffice-impress )
 
 # Install fonts
