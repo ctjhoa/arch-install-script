@@ -115,7 +115,7 @@ array+=( git zsh grml-zsh-config tmux openssh )
 array+=( awesome slock dmenu )
 
 # Install dev tools
-array+=( vim emacs )
+array+=( vim emacs stow )
 
 # Install requirements for pacaur
 array+=( sudo expac )
@@ -149,7 +149,7 @@ pacman --noconfirm -S infinality-bundle
 fi
 
 # Install vbox guest addition
-if [ "$vbox_install" != "yes" ]; then
+if [ "$vbox_install" == "yes" ]; then
 pacman --noconfirm -S virtualbox-guest-modules
 echo "vboxguest
 vboxsf
