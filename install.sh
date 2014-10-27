@@ -238,10 +238,10 @@ array=()
 array+=( compton-git )
 
 # Install basic fonts
-array+=( ttf-ms-fonts ttf-vista-fonts ttf-google-fonts-git ttf-chromeos-fonts )
+array+=( ttf-ms-fonts ttf-vista-fonts ttf-google-fonts-git )
 
 # Install programming fonts
-array+=( ttf-monaco ttf-inconsolata-g ttf-migu ttf-ricty ttf-anonymous-pro ttf-clear-sans )
+array+=( ttf-monaco ttf-inconsolata-g ttf-migu ttf-ricty ttf-clear-sans )
 
 # Install bitmap fonts
 array+=( stlarch_font stlarch_icons termsyn )
