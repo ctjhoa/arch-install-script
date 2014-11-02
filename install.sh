@@ -238,7 +238,7 @@ array=()
 array+=( compton-git )
 
 # Install basic fonts
-array+=( ttf-ms-fonts ttf-vista-fonts ttf-google-fonts-git )
+array+=( ttf-ms-fonts ttf-vista-fonts ttf-google-fonts-git ttf-mac-fonts )
 
 # Install programming fonts
 array+=( ttf-monaco ttf-inconsolata-g ttf-migu ttf-ricty ttf-clear-sans )
