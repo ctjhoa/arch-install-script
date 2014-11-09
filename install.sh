@@ -127,26 +127,24 @@ array+=( alsa-utils )
 array+=( keepass vlc gimp firefox scribus rtorrent weechat scrot feh )
 array+=( libreoffice-writer libreoffice-calc libreoffice-impress )
 
-# Install fonts
-array+=( ttf-freefont ttf-liberation ttf-dejavu )
-array+=( adobe-source-serif-pro-fonts )
-array+=( dina-font terminus-font tamsyn-font artwiz-fonts )
-
-pacman --noconfirm --needed -S  ${array[@]}
-
-chsh -s /bin/zsh
-
 # Install infinality bundle
 if ! grep --quiet infinality-bundle /etc/pacman.conf; then
 echo '
 [infinality-bundle]
-Server = http://bohoomil.com/repo/$arch' >> /etc/pacman.conf
+Server = http://bohoomil.com/repo/$arch
+
+[infinality-bundle-fonts]
+Server = http://bohoomil.com/repo/fonts' >> /etc/pacman.conf
 pacman-key -r 962DDE58
 pacman-key --lsign-key 962DDE58
 pacman --noconfirm -Syu
 pacman --noconfirm -Rdd cairo fontconfig freetype2
 pacman --noconfirm -S infinality-bundle
 fi
+
+pacman --noconfirm --needed -S  ${array[@]}
+
+chsh -s /bin/zsh
 
 # Install vbox guest addition
 if [ "$vbox_install" == "yes" ]; then
@@ -238,10 +236,13 @@ array=()
 array+=( compton-git )
 
 # Install basic fonts
-array+=( ttf-ms-fonts ttf-vista-fonts ttf-google-fonts-git ttf-mac-fonts )
+array+=( ibfonts-meta-base ibfonts-meta-extended )
+array+=( ttf-clear-sans-ibx ttf-consola-mono-ibx ttf-lato-ibx ttf-paratype-ibx ttf-roboto-ibx otf-source-code-pro-ibx otf-source-sans-pro-ibx otf-source-serif-pro-ibx )
+array+=( ttf-anonymous-pro )
+array+=( dina-font terminus-font tamsyn-font artwiz-fonts )
 
 # Install programming fonts
-array+=( ttf-monaco ttf-inconsolata-g ttf-migu ttf-ricty ttf-clear-sans )
+array+=( ttf-monaco ttf-inconsolata-g ttf-migu ttf-ricty )
 
 # Install bitmap fonts
 array+=( stlarch_font stlarch_icons termsyn )
