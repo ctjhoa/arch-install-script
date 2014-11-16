@@ -238,13 +238,12 @@ array+=( compton-git )
 # Install basic fonts
 array+=( ibfonts-meta-base ibfonts-meta-extended )
 array+=( ttf-clear-sans-ibx ttf-consola-mono-ibx ttf-lato-ibx ttf-paratype-ibx ttf-roboto-ibx otf-source-code-pro-ibx otf-source-sans-pro-ibx otf-source-serif-pro-ibx )
-array+=( ttf-anonymous-pro )
-array+=( dina-font terminus-font tamsyn-font artwiz-fonts )
 
 # Install programming fonts
-array+=( ttf-monaco ttf-inconsolata-g ttf-migu ttf-ricty )
+array+=( ttf-monaco ttf-anonymous-pro ttf-inconsolata-g ttf-migu ttf-ricty )
 
 # Install bitmap fonts
+array+=( dina-font terminus-font tamsyn-font artwiz-fonts )
 array+=( stlarch_font stlarch_icons termsyn )
 
 # Install theme
