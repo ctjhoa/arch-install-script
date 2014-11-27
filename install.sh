@@ -233,7 +233,7 @@ fi
 array=()
 
 # Install utilities
-array+=( compton-git )
+array+=( compton-git redshift-minimal )
 
 # Install basic fonts
 array+=( ibfonts-meta-base ibfonts-meta-extended )
@@ -253,33 +253,6 @@ array+=( numix-themes moka-icons-git )
 array+=( libreoffice-extension-languagetool )
 
 sudo pacaur --noconfirm --noedit -S ${array[@]}
-
-echo "
-###############################################################################
-# Git config part
-###############################################################################
-"
-
-# Go home
-cd `eval echo ~$username`
-
-echo "[user]
-	name = $fullname
-	email = $email
-[core]
-	editor = vim
-[alias]
-	st = status
-	ci = commit
-	co = checkout
-	br = branch -vv
-	sl = log --graph --pretty=oneline --abbrev-commit --decorate
-	up = pull --rebase
-[color]
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto" > .gitconfig
 
 echo "
 ###############################################################################
