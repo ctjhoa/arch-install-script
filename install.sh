@@ -109,7 +109,7 @@ array=()
 array+=( xorg-server xorg-server-utils xorg-xinit dbus )
 
 # Install admin tools
-array+=( git zsh grml-zsh-config tmux openssh )
+array+=( git zsh grml-zsh-config tmux openssh ntfs-3g )
 
 # Install window manager
 array+=( awesome slock dmenu )
