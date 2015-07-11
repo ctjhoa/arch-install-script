@@ -95,13 +95,19 @@ reflector -c France -f 10 -p http --save /etc/pacman.d/mirrorlist
 
 sed -i 's/^#Color/Color/' /etc/pacman.conf
 
+# keyring conf
+pacman --noconfirm -Syu haveged
+systemctl --no-ask-password start haveged
+systemctl --no-ask-password enable haveged
+rm -fr /etc/pacman.d/gnupg
+pacman-key --init
+pacman-key --populate archlinux
+
 echo "
 ###############################################################################
 # Install part
 ###############################################################################
 "
-# Sync
-pacman --noconfirm -Syu
 
 pacman_packages=()
 
