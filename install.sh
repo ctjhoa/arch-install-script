@@ -186,9 +186,11 @@ hostnamectl --no-ask-password set-hostname $hostname
 
 # DHCP
 systemctl --no-ask-password enable dhcpcd
+systemctl --no-ask-password start dhcpcd
 
 # SSH
 systemctl --no-ask-password enable sshd
+systemctl --no-ask-password start sshd
 
 echo "
 ###############################################################################
@@ -213,36 +215,43 @@ fi
 # Add sudo no password rights
 sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 
-# Install pacaur
-if ! command -v cower; then
-	cd /tmp
-	curl -OL http://aur.archlinux.org/packages/co/cower/cower.tar.gz
-	tar -xzf cower.tar.gz
-	chown $username cower -R
-	cd cower
-	sudo makepkg -s
-	pacman --noconfirm -U *.tar.xz
-fi
-
-if ! command -v pacaur; then
-	cd /tmp
-	cower -d pacaur
-	chown $username pacaur -R
-	cd pacaur
-	sudo makepkg -s
-	pacman --noconfirm -U *.tar.xz
-fi
-
 function install_aur {
-	if ! command -v $1; then
-		cd /tmp
-		cower -d $1
-		chown $username $1 -R
-		cd $1
-		sudo makepkg -s
-		pacman --noconfirm -U *.tar.xz
-	fi
+	for ARG in "$@"
+	do
+		if ! command -v $ARG; then
+			cd /tmp
+			curl -OL http://aur.archlinux.org/packages/${ARG:0:2}/${ARG}/${ARG}.tar.gz
+			tar -xzf ${ARG}.tar.gz
+			chown $username $ARG -R
+			cd $ARG
+			sudo makepkg -s
+			pacman --noconfirm -U *.tar.xz
+		fi
+	done
 }
+
+# Install pacaur
+ssh $username@localhost "$(typeset -f); install_aur cower pacaur"
+
+#if ! command -v cower; then
+#	cd /tmp
+#	curl -OL http://aur.archlinux.org/packages/co/cower/cower.tar.gz
+#	tar -xzf cower.tar.gz
+#	chown $username cower -R
+#	cd cower
+#	sudo makepkg -s
+#	pacman --noconfirm -U *.tar.xz
+#fi
+#
+#if ! command -v pacaur; then
+#	cd /tmp
+#	cower -d pacaur
+#	chown $username pacaur -R
+#	cd pacaur
+#	sudo makepkg -s
+#	pacman --noconfirm -U *.tar.xz
+#fi
+
 aur_packages=()
 
 # Install utilities
