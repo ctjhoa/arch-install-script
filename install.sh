@@ -99,9 +99,6 @@ sed -i 's/^#Color/Color/' /etc/pacman.conf
 pacman --noconfirm -Syu haveged
 systemctl --no-ask-password start haveged
 systemctl --no-ask-password enable haveged
-rm -fr /etc/pacman.d/gnupg
-pacman-key --init
-pacman-key --populate archlinux
 
 echo "
 ###############################################################################
