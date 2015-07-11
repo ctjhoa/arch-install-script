@@ -70,7 +70,7 @@ if ! source install.conf; then
 	read email
 fi
 
-if [ -z "$proxy" ]; then
+if [ -z "${proxy:+}" ]; then
 	alias sudo="sudo -u $username "
 else
 	export http_proxy=$proxy
