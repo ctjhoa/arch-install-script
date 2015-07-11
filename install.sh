@@ -103,29 +103,29 @@ echo "
 # Sync
 pacman --noconfirm -Syu
 
-array=()
+pacman_packages=()
 
 # Install X essentials
-array+=( xorg-server xorg-server-utils xorg-xinit dbus )
+pacman_packages+=( xorg-server xorg-server-utils xorg-xinit dbus )
 
 # Install admin tools
-array+=( git zsh grml-zsh-config tmux openssh ntfs-3g )
+pacman_packages+=( git zsh grml-zsh-config tmux openssh ntfs-3g )
 
 # Install window manager
-array+=( awesome slock dmenu )
+pacman_packages+=( awesome slock dmenu )
 
 # Install dev tools
-array+=( vim emacs stow )
+pacman_packages+=( vim emacs stow )
 
 # Install requirements for pacaur
-array+=( sudo expac )
+pacman_packages+=( sudo expac )
 
 # Install audio
-array+=( alsa-utils )
+pacman_packages+=( alsa-utils )
 
 # Install useful apps
-array+=( keepass vlc gimp firefox scribus rtorrent weechat scrot feh )
-array+=( libreoffice-writer libreoffice-calc libreoffice-impress )
+pacman_packages+=( keepass vlc gimp firefox scribus rtorrent weechat scrot feh )
+pacman_packages+=( libreoffice-writer libreoffice-calc libreoffice-impress )
 
 # Install infinality bundle
 if ! grep --quiet infinality-bundle /etc/pacman.conf; then
@@ -142,7 +142,7 @@ pacman --noconfirm -Rdd cairo fontconfig freetype2
 pacman --noconfirm -S infinality-bundle
 fi
 
-pacman --noconfirm --needed -S  ${array[@]}
+pacman --noconfirm --needed -S  ${pacman_packages[@]}
 
 chsh -s /bin/zsh
 
@@ -230,29 +230,39 @@ if ! command -v pacaur; then
 	pacman --noconfirm -U *.tar.xz
 fi
 
-array=()
+aur_packages=()
 
 # Install utilities
-array+=( compton-git redshift-minimal )
+aur_packages+=( compton-git redshift-minimal )
+
+# Work tools
+aur_packages+=( nodejs npm rust-nightly-bin )
 
 # Install basic fonts
-array+=( ibfonts-meta-base ibfonts-meta-extended )
-array+=( ttf-clear-sans-ibx ttf-consola-mono-ibx ttf-lato-ibx ttf-paratype-ibx ttf-roboto-ibx otf-source-code-pro-ibx otf-source-sans-pro-ibx otf-source-serif-pro-ibx )
+aur_packages+=( ibfonts-meta-base ibfonts-meta-extended )
+aur_packages+=( ttf-clear-sans-ibx ttf-consola-mono-ibx ttf-lato-ibx ttf-paratype-ibx ttf-roboto-ibx otf-source-code-pro-ibx otf-source-sans-pro-ibx otf-source-serif-pro-ibx )
 
 # Install programming fonts
-array+=( ttf-monaco ttf-anonymous-pro ttf-inconsolata-g ttf-migu ttf-ricty )
+aur_packages+=( ttf-monaco ttf-anonymous-pro ttf-inconsolata-g ttf-migu ttf-ricty )
 
 # Install bitmap fonts
-array+=( dina-font terminus-font tamsyn-font artwiz-fonts )
-array+=( stlarch_font stlarch_icons termsyn )
+aur_packages+=( dina-font terminus-font tamsyn-font artwiz-fonts )
+aur_packages+=( stlarch_font stlarch_icons termsyn )
 
 # Install theme
-array+=( numix-themes moka-icons-git )
+aur_packages+=( numix-themes moka-icons-git )
 
 # Install others
-array+=( libreoffice-extension-languagetool )
+aur_packages+=( libreoffice-extension-languagetool )
 
-sudo pacaur --noconfirm --noedit -S ${array[@]}
+sudo pacaur --noconfirm --noedit -S ${aur_packages[@]}
+
+
+npm_packages=()
+
+npm_packages+=( grunt gulp ember-cli tern )
+
+sudo npm install ${npm_packages[@]}
 
 echo "
 ###############################################################################
