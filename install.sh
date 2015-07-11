@@ -260,9 +260,9 @@ sudo pacaur --noconfirm --noedit -S ${aur_packages[@]}
 
 npm_packages=()
 
-npm_packages+=( grunt gulp ember-cli tern )
+npm_packages+=( grunt gulp ember-cli tern bower )
 
-sudo npm install ${npm_packages[@]}
+sudo npm install -g ${npm_packages[@]}
 
 echo "
 ###############################################################################
