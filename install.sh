@@ -125,7 +125,7 @@ pacman_packages+=( alsa-utils )
 
 # Install useful apps
 pacman_packages+=( keepass vlc gimp firefox scribus rtorrent weechat scrot feh )
-pacman_packages+=( libreoffice-writer libreoffice-calc libreoffice-impress )
+pacman_packages+=( libreoffice-fresh )
 
 # Install infinality bundle
 if ! grep --quiet infinality-bundle /etc/pacman.conf; then
