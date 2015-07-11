@@ -71,12 +71,12 @@ if ! source install.conf; then
 fi
 
 if [ -z ${proxy:+x} ]; then
-	alias sudo="sudo -u $username "
+	alias sudo="sudo -i -u $username "
 else
 	export http_proxy=$proxy
 	export https_proxy=$http_proxy
 	export ftp_proxy=$http_proxy
-	alias sudo="sudo -u $username env http_proxy=$http_proxy https_proxy=$https_proxy ftp_proxy=$ftp_proxy "
+	alias sudo="sudo -i -u $username env http_proxy=$http_proxy https_proxy=$https_proxy ftp_proxy=$ftp_proxy "
 fi
 
 
@@ -116,6 +116,9 @@ pacman_packages+=( awesome slock dmenu )
 
 # Install dev tools
 pacman_packages+=( vim emacs stow )
+
+# Work tools
+pacman_packages+=( nodejs npm )
 
 # Install requirements for pacaur
 pacman_packages+=( sudo expac )
@@ -230,13 +233,23 @@ if ! command -v pacaur; then
 	pacman --noconfirm -U *.tar.xz
 fi
 
+function install_aur {
+	if ! command -v $1; then
+		cd /tmp
+		cower -d $1
+		chown $username $1 -R
+		cd $1
+		sudo makepkg -s
+		pacman --noconfirm -U *.tar.xz
+	fi
+}
 aur_packages=()
 
 # Install utilities
 aur_packages+=( compton-git redshift-minimal )
 
 # Work tools
-aur_packages+=( nodejs npm rust-nightly-bin )
+aur_packages+=( rust-nightly-bin )
 
 # Install basic fonts
 aur_packages+=( ibfonts-meta-base ibfonts-meta-extended )
