@@ -106,7 +106,7 @@ pacman --noconfirm -Syu
 pacman_packages=()
 
 # Install X essentials
-pacman_packages+=( xorg-server xorg-server-utils xorg-xinit dbus )
+pacman_packages+=( xorg-server xorg-server-utils xorg-xinit dbus xsel )
 
 # Install admin tools
 pacman_packages+=( git zsh grml-zsh-config tmux openssh ntfs-3g )
