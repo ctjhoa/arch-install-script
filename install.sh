@@ -224,7 +224,7 @@ function install_aur {
 			tar -xzf ${ARG}.tar.gz
 			chown $username $ARG -R
 			cd $ARG
-			sudo makepkg -s
+			makepkg -s
 			pacman --noconfirm -U *.tar.xz
 		fi
 	done
