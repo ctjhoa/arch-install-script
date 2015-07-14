@@ -261,7 +261,7 @@ aur_packages=()
 aur_packages+=( compton-git redshift-minimal )
 
 # Work tools
-aur_packages+=( rust-nightly-bin )
+aur_packages+=( rust-nightly-bin editorconfig-core-c )
 
 # Install basic fonts
 aur_packages+=( ibfonts-meta-base ibfonts-meta-extended )
