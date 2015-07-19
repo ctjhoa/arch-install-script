@@ -145,7 +145,7 @@ dirmngr </dev/null
 pacman-key -r 962DDE58
 pacman-key --lsign-key 962DDE58
 pacman --noconfirm -Syu
-pacman --noconfirm -Rdd cairo fontconfig freetype2
+pacman --noconfirm -Rdd cairo fontconfig freetype2 || true
 pacman --noconfirm -S infinality-bundle
 fi
 
