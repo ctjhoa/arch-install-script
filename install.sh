@@ -141,6 +141,7 @@ Server = http://bohoomil.com/repo/$arch
 
 [infinality-bundle-fonts]
 Server = http://bohoomil.com/repo/fonts' >> /etc/pacman.conf
+dirmngr </dev/null
 pacman-key -r 962DDE58
 pacman-key --lsign-key 962DDE58
 pacman --noconfirm -Syu
