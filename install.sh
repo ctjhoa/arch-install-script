@@ -219,6 +219,9 @@ fi
 # Add sudo no password rights
 sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 
+# Packages signature checking
+sed -i 's/^#keyserver-options auto-key-retrieve/keyserver-options auto-key-retrieve/' /home/$username/.gnupg/gpg.conf
+
 function install_aur {
 	for ARG in "$@"
 	do
@@ -236,25 +239,6 @@ function install_aur {
 
 # Install pacaur
 ssh $username@localhost "$(typeset -f); install_aur cower pacaur"
-
-#if ! command -v cower; then
-#	cd /tmp
-#	curl -OL http://aur.archlinux.org/packages/co/cower/cower.tar.gz
-#	tar -xzf cower.tar.gz
-#	chown $username cower -R
-#	cd cower
-#	sudo makepkg -s
-#	pacman --noconfirm -U *.tar.xz
-#fi
-#
-#if ! command -v pacaur; then
-#	cd /tmp
-#	cower -d pacaur
-#	chown $username pacaur -R
-#	cd pacaur
-#	sudo makepkg -s
-#	pacman --noconfirm -U *.tar.xz
-#fi
 
 aur_packages=()
 
