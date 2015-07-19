@@ -231,14 +231,14 @@ function install_aur {
 			tar -xzf ${ARG}.tar.gz
 			chown $username $ARG -R
 			cd $ARG
-			makepkg -s --skippgpcheck
+			sudo sh -c "cd /tmp/$ARG;makepkg -s --skippgpcheck"
 			pacman --noconfirm -U *.tar.xz
 		fi
 	done
 }
 
 # Install pacaur
-ssh $username@localhost "$(typeset -f); install_aur cower pacaur"
+install_aur cower pacaur
 
 aur_packages=()
 
