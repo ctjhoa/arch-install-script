@@ -231,7 +231,7 @@ function install_aur {
 			tar -xzf ${ARG}.tar.gz
 			chown $username $ARG -R
 			cd $ARG
-			sudo sh -c "cd /tmp/$ARG;makepkg -s --skippgpcheck"
+			sudo -i -u $username sh -c "cd /tmp/$ARG; makepkg -s --skippgpcheck"
 			pacman --noconfirm -U *.tar.xz
 		fi
 	done
