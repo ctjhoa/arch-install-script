@@ -220,7 +220,7 @@ fi
 sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 
 # Packages signature checking
-sed -i 's/^#keyserver-options auto-key-retrieve/keyserver-options auto-key-retrieve/' /home/$username/.gnupg/gpg.conf
+#sed -i 's/^#keyserver-options auto-key-retrieve/keyserver-options auto-key-retrieve/' /home/$username/.gnupg/gpg.conf
 
 function install_aur {
 	for ARG in "$@"
@@ -231,7 +231,7 @@ function install_aur {
 			tar -xzf ${ARG}.tar.gz
 			chown $username $ARG -R
 			cd $ARG
-			makepkg -s
+			makepkg -s --skippgpcheck
 			pacman --noconfirm -U *.tar.xz
 		fi
 	done
