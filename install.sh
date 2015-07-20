@@ -265,14 +265,14 @@ aur_packages+=( numix-themes moka-icons-git )
 # Install others
 aur_packages+=( libreoffice-extension-languagetool )
 
-sudo pacaur --noconfirm --noedit -S ${aur_packages[@]}
+sudo -i -u $username pacaur --noconfirm --noedit -S ${aur_packages[@]}
 
 
 npm_packages=()
 
 npm_packages+=( grunt gulp ember-cli tern bower )
 
-sudo npm install -g ${npm_packages[@]}
+npm install -g ${npm_packages[@]}
 
 echo "
 ###############################################################################
