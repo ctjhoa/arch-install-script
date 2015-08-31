@@ -183,7 +183,7 @@ localectl --no-ask-password set-locale LANG="en_US.UTF-8" LC_COLLATE="C" LC_TIME
 
 # Set keymaps
 localectl --no-ask-password set-keymap us
-localectl --no-ask-password set-x11-keymap us
+localectl --no-convert set-x11-keymap us,us pc104 ,intl grp:caps_toggle
 
 # Hostname
 hostnamectl --no-ask-password set-hostname $hostname
