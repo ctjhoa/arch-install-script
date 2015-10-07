@@ -115,7 +115,7 @@ pacman_packages+=( xorg-server xorg-server-utils xorg-xinit dbus xsel )
 pacman_packages+=( git zsh grml-zsh-config tmux openssh ntfs-3g )
 
 # Install window manager
-pacman_packages+=( awesome slock dmenu )
+pacman_packages+=( awesome slock dmenu libnotify dunst )
 
 # Install dev tools
 pacman_packages+=( vim emacs stow )
