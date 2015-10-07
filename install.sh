@@ -221,6 +221,32 @@ sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /et
 
 # Packages signature checking
 #sed -i 's/^#keyserver-options auto-key-retrieve/keyserver-options auto-key-retrieve/' /home/$username/.gnupg/gpg.conf
+echo "
+###############################################################################
+# My git repos
+###############################################################################
+"
+
+# Dotfiles
+rm -rf dotfiles
+sudo git clone git@github.com:ctjhoa/dotfiles.git || sudo git clone https://github.com/ctjhoa/dotfiles.git
+sudo dotfiles/install.sh
+
+# Dwm (Dynamic Window Manager - suckless)
+rm -rf dwm
+sudo git clone git@github.com:ctjhoa/dotfiles.git || sudo git clone https://github.com/ctjhoa/dwm.git
+sudo dwm/install.sh
+
+# St (Simple terminal - suckless)
+rm -rf st
+sudo git clone git@github.com:ctjhoa/st.git || sudo git clone https://github.com/ctjhoa/st.git
+sudo st/install.sh
+
+echo "
+###############################################################################
+# User packages
+###############################################################################
+"
 
 function install_aur {
 	for ARG in "$@"
@@ -231,7 +257,7 @@ function install_aur {
 			tar -xzf ${ARG}.tar.gz
 			chown $username $ARG -R
 			cd $ARG
-			sudo -i -u $username sh -c "cd /tmp/$ARG; makepkg -s --skippgpcheck"
+			sudo -i -u $username sh -c "cd /tmp/$ARG; makepkg -s"
 			pacman --noconfirm -U *.tar.xz
 		fi
 	done
@@ -274,26 +300,7 @@ npm_packages+=( grunt gulp ember-cli tern bower )
 
 npm install -g ${npm_packages[@]}
 
-echo "
-###############################################################################
-# My git repos
-###############################################################################
-"
 
-# Dotfiles
-rm -rf dotfiles
-sudo git clone git@github.com:ctjhoa/dotfiles.git || sudo git clone https://github.com/ctjhoa/dotfiles.git
-sudo dotfiles/install.sh
-
-# Dwm (Dynamic Window Manager - suckless)
-rm -rf dwm
-sudo git clone git@github.com:ctjhoa/dotfiles.git || sudo git clone https://github.com/ctjhoa/dwm.git
-sudo dwm/install.sh
-
-# St (Simple terminal - suckless)
-rm -rf st
-sudo git clone git@github.com:ctjhoa/st.git || sudo git clone https://github.com/ctjhoa/st.git
-sudo st/install.sh
 
 echo "
 ###############################################################################
