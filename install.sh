@@ -158,7 +158,7 @@ npm_packages=()
 
 npm_packages+=( grunt gulp ember-cli tern bower )
 
-npm install -g ${npm_packages[@]}
+npm install -g ${npm_packages[@]} || true
 
 echo "
 ###############################################################################
