@@ -68,16 +68,16 @@ aur_packages+=( ibfonts-meta-base ibfonts-meta-extended )
 aur_packages+=( ttf-clear-sans-ibx ttf-consola-mono-ibx ttf-lato-ibx ttf-paratype-ibx ttf-roboto-ibx otf-source-code-pro-ibx otf-source-sans-pro-ibx otf-source-serif-pro-ibx )
 
 # Install programming fonts
-aur_packages+=( ttf-monaco ttf-anonymous-pro ttf-inconsolata-g ttf-migu ttf-ricty )
+aur_packages+=( ttf-monaco ttf-anonymous-pro )
 
 # Install bitmap fonts
 aur_packages+=( dina-font terminus-font tamsyn-font artwiz-fonts )
-aur_packages+=( stlarch_font stlarch_icons termsyn )
+aur_packages+=( stlarch_font stlarch_icons )
 
 # Install theme
-aur_packages+=( numix-themes moka-icons-git )
+aur_packages+=( numix-themes moka-icon-theme-git )
 
 # Install others
 aur_packages+=( libreoffice-extension-languagetool )
 
-pacaur -S ${aur_packages[@]}
+pacaur -S --noconfirm --noedit --needed ${aur_packages[@]}
