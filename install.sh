@@ -70,6 +70,11 @@ if ! source install.conf; then
 	read email
 fi
 
+if ! [ -z ${proxy:+x} ]; then
+	export http_proxy=$proxy
+	export https_proxy=$http_proxy
+	export ftp_proxy=$http_proxy
+fi
 
 # Save current pwd
 pwd=`pwd`
@@ -223,18 +228,13 @@ echo "
 ###############################################################################
 "
 
+cp ./install_user.sh /home/$username/
+
 if [ -z ${proxy:+x} ]; then
-	alias sudo="sudo -i -u $username "
+	sudo -i -u $username ./install_user.sh
 else
-	export http_proxy=$proxy
-	export https_proxy=$http_proxy
-	export ftp_proxy=$http_proxy
-	alias sudo="sudo -i -u $username env http_proxy=$http_proxy https_proxy=$https_proxy ftp_proxy=$ftp_proxy "
+	sudo -i -u $username env http_proxy=$http_proxy https_proxy=$https_proxy ftp_proxy=$ftp_proxy ./install_user.sh
 fi
-
-sudo ./install_user.sh
-
-unalias sudo
 
 echo "
 ###############################################################################
