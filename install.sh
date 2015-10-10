@@ -70,15 +70,6 @@ if ! source install.conf; then
 	read email
 fi
 
-if [ -z ${proxy:+x} ]; then
-	alias sudo="sudo -i -u $username "
-else
-	export http_proxy=$proxy
-	export https_proxy=$http_proxy
-	export ftp_proxy=$http_proxy
-	alias sudo="sudo -i -u $username env http_proxy=$http_proxy https_proxy=$https_proxy ftp_proxy=$ftp_proxy "
-fi
-
 
 # Save current pwd
 pwd=`pwd`
@@ -162,6 +153,13 @@ vboxvideo
 " > /etc/modules-load.d/virtualbox.conf
 fi
 
+# Install npm packages
+npm_packages=()
+
+npm_packages+=( grunt gulp ember-cli tern bower )
+
+npm install -g ${npm_packages[@]}
+
 echo "
 ###############################################################################
 # Systemd part
@@ -219,92 +217,30 @@ fi
 # Add sudo no password rights
 sed -i 's/^# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 
-# Packages signature checking
-#sed -i 's/^#keyserver-options auto-key-retrieve/keyserver-options auto-key-retrieve/' /home/$username/.gnupg/gpg.conf
 echo "
 ###############################################################################
-# My git repos
+# Install user
 ###############################################################################
 "
 
-# Dotfiles
-sudo git clone git@github.com:ctjhoa/dotfiles.git || sudo git clone https://github.com/ctjhoa/dotfiles.git
-sudo dotfiles/install.sh
+if [ -z ${proxy:+x} ]; then
+	alias sudo="sudo -i -u $username "
+else
+	export http_proxy=$proxy
+	export https_proxy=$http_proxy
+	export ftp_proxy=$http_proxy
+	alias sudo="sudo -i -u $username env http_proxy=$http_proxy https_proxy=$https_proxy ftp_proxy=$ftp_proxy "
+fi
 
-# Dwm (Dynamic Window Manager - suckless)
-sudo git clone git@github.com:ctjhoa/dotfiles.git || sudo git clone https://github.com/ctjhoa/dwm.git
-sudo dwm/install.sh
+sudo ./install_user.sh
 
-# St (Simple terminal - suckless)
-sudo git clone git@github.com:ctjhoa/st.git || sudo git clone https://github.com/ctjhoa/st.git
-sudo st/install.sh
-
-echo "
-###############################################################################
-# User packages
-###############################################################################
-"
-
-function install_aur {
-	for ARG in "$@"
-	do
-		if ! command -v $ARG; then
-			cd /tmp
-			curl -OL http://aur.archlinux.org/packages/${ARG:0:2}/${ARG}/${ARG}.tar.gz
-			tar -xzf ${ARG}.tar.gz
-			chown $username $ARG -R
-			cd $ARG
-			sudo -i -u $username sh -c "cd /tmp/$ARG; makepkg -s"
-			pacman --noconfirm -U *.tar.xz
-		fi
-	done
-}
-
-# Install pacaur
-install_aur cower pacaur
-
-aur_packages=()
-
-# Install utilities
-aur_packages+=( compton-git redshift-minimal )
-
-# Work tools
-aur_packages+=( rust-nightly-bin editorconfig-core-c )
-
-# Install basic fonts
-aur_packages+=( ibfonts-meta-base ibfonts-meta-extended )
-aur_packages+=( ttf-clear-sans-ibx ttf-consola-mono-ibx ttf-lato-ibx ttf-paratype-ibx ttf-roboto-ibx otf-source-code-pro-ibx otf-source-sans-pro-ibx otf-source-serif-pro-ibx )
-
-# Install programming fonts
-aur_packages+=( ttf-monaco ttf-anonymous-pro ttf-inconsolata-g ttf-migu ttf-ricty )
-
-# Install bitmap fonts
-aur_packages+=( dina-font terminus-font tamsyn-font artwiz-fonts )
-aur_packages+=( stlarch_font stlarch_icons termsyn )
-
-# Install theme
-aur_packages+=( numix-themes moka-icons-git )
-
-# Install others
-aur_packages+=( libreoffice-extension-languagetool )
-
-sudo -i -u $username pacaur -S ${aur_packages[@]}
-
-
-npm_packages=()
-
-npm_packages+=( grunt gulp ember-cli tern bower )
-
-npm install -g ${npm_packages[@]}
-
-
+unalias sudo
 
 echo "
 ###############################################################################
 # Cleaning
 ###############################################################################
 "
-unalias sudo
 # Remove no password sudo rights
 sed -i 's/^%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
 # Add sudo rights
