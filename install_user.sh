@@ -65,7 +65,7 @@ aur_packages+=( rust-nightly-bin editorconfig-core-c )
 
 # Install basic fonts
 aur_packages+=( ibfonts-meta-base ibfonts-meta-extended )
-aur_packages+=( ttf-clear-sans-ibx ttf-consola-mono-ibx ttf-lato-ibx ttf-paratype-ibx ttf-roboto-ibx otf-source-code-pro-ibx otf-source-sans-pro-ibx otf-source-serif-pro-ibx )
+aur_packages+=( ttf-clear-sans-ibx ttf-consola-mono-ibx ttf-lato-ibx ttf-paratype-ibx ttf-roboto-ibx otf-source-code-pro-ibx otf-source-sans-pro-ibx otf-source-serif-pro-ibx otf-fira-mono-ibx )
 
 # Install programming fonts
 aur_packages+=( ttf-monaco ttf-anonymous-pro )
