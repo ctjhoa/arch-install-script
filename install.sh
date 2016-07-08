@@ -104,6 +104,9 @@ echo "
 
 pacman_packages=()
 
+# Install linux headers
+pacman_packages+=( linux-headers )
+
 # Install X essentials
 pacman_packages+=( xorg-server xorg-server-utils xorg-xinit dbus xsel )
 
