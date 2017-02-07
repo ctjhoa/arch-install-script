@@ -114,7 +114,7 @@ pacman_packages+=( xorg-server xorg-server-utils xorg-xinit dbus xsel )
 pacman_packages+=( cairo fontconfig freetype2 )
 
 # Install linux fonts
-pacman_packages+=( ttf-dejavu ttf-liberation ttf-inconsolata ttf-anonymous-pro )
+pacman_packages+=( ttf-dejavu ttf-liberation ttf-inconsolata ttf-anonymous-pro ttf-ubuntu-font-family )
 
 # Install google fonts
 pacman_packages+=( ttf-croscore ttf-droid ttf-roboto )
