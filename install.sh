@@ -110,6 +110,21 @@ pacman_packages+=( linux-headers )
 # Install X essentials
 pacman_packages+=( xorg-server xorg-server-utils xorg-xinit dbus xsel )
 
+# Install font essentials
+pacman_packages+=( cairo fontconfig freetype2 )
+
+# Install linux fonts
+pacman_packages+=( ttf-dejavu ttf-liberation ttf-inconsolata ttf-anonymous-pro )
+
+# Install google fonts
+pacman_packages+=( ttf-croscore ttf-droid ttf-roboto )
+
+# Install adobe fonts
+pacman_packages+=( adobe-source-code-pro-fonts adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts )
+
+# Install bitmap fonts
+aur_packages+=( dina-font terminus-font tamsyn-font artwiz-fonts )
+
 # Install admin tools
 pacman_packages+=( git zsh grml-zsh-config tmux openssh ntfs-3g )
 
@@ -132,23 +147,11 @@ pacman_packages+=( alsa-utils )
 pacman_packages+=( keepass vlc gimp firefox scribus rtorrent weechat scrot feh )
 pacman_packages+=( libreoffice-fresh )
 
-# Install infinality bundle
-if ! grep --quiet infinality-bundle /etc/pacman.conf; then
-echo '
-[infinality-bundle]
-Server = http://bohoomil.com/repo/$arch
-
-[infinality-bundle-fonts]
-Server = http://bohoomil.com/repo/fonts' >> /etc/pacman.conf
-dirmngr </dev/null
-pacman-key -r 962DDE58
-pacman-key --lsign-key 962DDE58
-pacman --noconfirm -Syu
-pacman --noconfirm -Rdd cairo fontconfig freetype2 || true
-pacman --noconfirm -S infinality-bundle
-fi
-
 pacman --noconfirm --needed -S  ${pacman_packages[@]}
+
+# Better fonts rendering
+ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
+ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
 
 chsh -s /bin/zsh
 
