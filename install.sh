@@ -147,7 +147,7 @@ pacman_packages+=( sudo expac )
 pacman_packages+=( alsa-utils )
 
 # Install useful apps
-pacman_packages+=( keepass vlc gimp firefox scribus rtorrent weechat scrot feh )
+pacman_packages+=( keepass vlc gimp firefox chromium scribus rtorrent weechat scrot feh )
 pacman_packages+=( libreoffice-fresh )
 
 pacman --noconfirm --needed -S  ${pacman_packages[@]}
