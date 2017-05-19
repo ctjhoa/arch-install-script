@@ -164,13 +164,6 @@ vboxvideo
 " > /etc/modules-load.d/virtualbox.conf
 fi
 
-# Install npm packages
-npm_packages=()
-
-npm_packages+=( grunt gulp ember-cli tern bower )
-
-npm install -g ${npm_packages[@]} || true
-
 echo "
 ###############################################################################
 # Systemd part
