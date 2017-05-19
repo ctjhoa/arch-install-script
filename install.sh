@@ -108,7 +108,7 @@ pacman_packages=()
 pacman_packages+=( linux-headers )
 
 # Install X essentials
-pacman_packages+=( xorg-server xorg-server-utils xorg-xinit dbus xsel )
+pacman_packages+=( xorg-server xorg-apps xorg-xinit dbus xsel )
 
 # Install font essentials
 pacman_packages+=( cairo fontconfig freetype2 )
