@@ -135,7 +135,7 @@ pacman_packages+=( slock dmenu libnotify dunst )
 pacman_packages+=( vim emacs stow )
 
 # Work tools
-pacman_packages+=( nodejs npm )
+pacman_packages+=( nodejs npm rustup )
 
 # Install requirements for pacaur
 pacman_packages+=( sudo expac )
