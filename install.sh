@@ -129,7 +129,7 @@ aur_packages+=( dina-font terminus-font tamsyn-font artwiz-fonts )
 pacman_packages+=( git zsh grml-zsh-config tmux openssh ntfs-3g )
 
 # Install window manager
-pacman_packages+=( slock dmenu libnotify dunst )
+pacman_packages+=( slock dmenu libnotify dunst numix-gtk-theme )
 
 # Install dev tools
 pacman_packages+=( vim emacs stow )
