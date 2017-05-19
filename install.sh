@@ -128,6 +128,9 @@ aur_packages+=( dina-font terminus-font tamsyn-font artwiz-fonts )
 # Install admin tools
 pacman_packages+=( git zsh grml-zsh-config tmux openssh ntfs-3g )
 
+# Install network tools
+pacman_packages+=( ifplugd wpa_actiond wpa_supplicant )
+
 # Install window manager
 pacman_packages+=( slock dmenu libnotify dunst numix-gtk-theme )
 
@@ -189,10 +192,6 @@ localectl --no-convert set-x11-keymap us,us pc104 ,intl grp:caps_toggle
 
 # Hostname
 hostnamectl --no-ask-password set-hostname $hostname
-
-# DHCP
-systemctl --no-ask-password enable dhcpcd
-systemctl --no-ask-password start dhcpcd
 
 # SSH
 systemctl --no-ask-password enable sshd
