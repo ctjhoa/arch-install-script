@@ -7,7 +7,7 @@ echo "
 "
 
 # Dotfiles
-git clone git@github.com:ctjhoa/dotfiles.git || git clone https://github.com/ctjhoa/dotfiles.git
+git clone --recursive git@github.com:ctjhoa/dotfiles.git || git clone --recursive https://github.com/ctjhoa/dotfiles.git
 cd dotfiles
 ./install.sh
 cd -
