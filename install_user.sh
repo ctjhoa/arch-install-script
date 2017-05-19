@@ -61,7 +61,7 @@ aur_packages=()
 aur_packages+=( compton-git redshift-minimal )
 
 # Work tools
-aur_packages+=( rust-nightly-bin editorconfig-core-c )
+aur_packages+=( editorconfig-core-c )
 
 # Install more fonts
 # aur_packages+=( ttf-lato ttf-paratype ttf-clear-sans ttf-fira-mono ttf-monaco )
