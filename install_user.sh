@@ -65,7 +65,6 @@ aur_packages+=( editorconfig-core-c )
 
 # Install more fonts
 # aur_packages+=( ttf-lato ttf-paratype ttf-clear-sans ttf-fira-mono ttf-monaco )
-aur_packages+=( stlarch_font stlarch_icons )
 
 # Install theme
 aur_packages+=( moka-icon-theme-git )
