@@ -68,7 +68,7 @@ aur_packages+=( editorconfig-core-c )
 aur_packages+=( stlarch_font stlarch_icons )
 
 # Install theme
-aur_packages+=( numix-themes moka-icon-theme-git )
+aur_packages+=( moka-icon-theme-git )
 
 # Install others
 aur_packages+=( libreoffice-extension-languagetool )
