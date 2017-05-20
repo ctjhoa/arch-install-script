@@ -31,8 +31,7 @@ echo "
 "
 
 # Packages signature checking
-sed -i 's|^#keyserver-options auto-key-retrieve|keyserver-options auto-key-retrieve|' .gnupg/gpg.conf
-sed -i 's|^keyserver hkp://keys.gnupg.net|#keyserver hkp://keys.gnupg.net|' .gnupg/gpg.conf
+echo "keyserver-options auto-key-retrieve" >> .gnupg/gpg.conf
 echo "keyserver hkp://pgp.mit.edu" >> .gnupg/gpg.conf
 
 echo "
