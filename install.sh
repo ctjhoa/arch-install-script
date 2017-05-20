@@ -129,7 +129,7 @@ aur_packages+=( dina-font terminus-font tamsyn-font artwiz-fonts )
 pacman_packages+=( git zsh grml-zsh-config tmux openssh ntfs-3g )
 
 # Install network tools
-pacman_packages+=( ifplugd wpa_actiond wpa_supplicant )
+pacman_packages+=( ifplugd wpa_actiond wpa_supplicant syncthing )
 
 # Install window manager
 pacman_packages+=( slock dmenu libnotify dunst numix-gtk-theme )
