@@ -144,7 +144,7 @@ pacman_packages+=( nodejs npm rustup )
 pacman_packages+=( sudo expac )
 
 # Install audio
-pacman_packages+=( alsa-utils )
+pacman_packages+=( alsa-utils pulseaudio )
 
 # Install useful apps
 pacman_packages+=( keepass mpv vlc gimp firefox chromium scribus rtorrent weechat scrot feh )
