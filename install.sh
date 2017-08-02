@@ -126,7 +126,7 @@ pacman_packages+=( adobe-source-code-pro-fonts adobe-source-sans-pro-fonts adobe
 aur_packages+=( dina-font terminus-font tamsyn-font artwiz-fonts )
 
 # Install admin tools
-pacman_packages+=( git zsh grml-zsh-config tmux openssh ntfs-3g sysstat ripgrep )
+pacman_packages+=( git zsh grml-zsh-config tmux openssh ntfs-3g sysstat ripgrep tree )
 
 # Install network tools
 pacman_packages+=( ifplugd wpa_actiond wpa_supplicant syncthing )
