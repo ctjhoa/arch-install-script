@@ -29,6 +29,8 @@ echo "
 # PGP
 ###############################################################################
 "
+# Create gpg db
+gpg --list-keys
 
 # Packages signature checking
 echo "keyserver-options auto-key-retrieve" >> .gnupg/gpg.conf
