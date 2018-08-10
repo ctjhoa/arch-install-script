@@ -126,7 +126,7 @@ pacman_packages+=( adobe-source-code-pro-fonts adobe-source-sans-pro-fonts adobe
 aur_packages+=( dina-font terminus-font tamsyn-font artwiz-fonts )
 
 # Install admin tools
-pacman_packages+=( git zsh grml-zsh-config tmux openssh ntfs-3g sysstat ripgrep tree )
+pacman_packages+=( sudo pacman-contrib pacmatic git zsh grml-zsh-config tmux openssh ntfs-3g sysstat ripgrep tree )
 
 # Install network tools
 pacman_packages+=( ifplugd wpa_actiond wpa_supplicant syncthing )
@@ -139,9 +139,6 @@ pacman_packages+=( vim emacs stow )
 
 # Work tools
 pacman_packages+=( nodejs npm rustup )
-
-# Install requirements for pacaur
-pacman_packages+=( sudo expac )
 
 # Install audio
 pacman_packages+=( alsa-utils pulseaudio )
