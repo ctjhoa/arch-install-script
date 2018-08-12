@@ -59,7 +59,7 @@ install_aur cower pacaur
 aur_packages=()
 
 # Install utilities
-aur_packages+=( compton-git redshift-minimal )
+aur_packages+=( compton-git )
 
 # Install more fonts
 # aur_packages+=( ttf-lato ttf-paratype ttf-clear-sans ttf-fira-mono ttf-monaco )
