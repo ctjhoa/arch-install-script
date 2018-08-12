@@ -53,18 +53,8 @@ function install_aur {
 	done
 }
 
-# Install pacaur
-install_aur cower pacaur
-
-aur_packages=()
-
-# Install utilities
-aur_packages+=( compton-git )
+# Install AUR packages
+install_aur yay libreoffice-extension-languagetool
 
 # Install more fonts
-# aur_packages+=( ttf-lato ttf-paratype ttf-clear-sans ttf-fira-mono ttf-monaco )
-
-# Install others
-aur_packages+=( libreoffice-extension-languagetool )
-
-pacaur -S --noconfirm --noedit --needed ${aur_packages[@]}
+# ttf-lato ttf-paratype ttf-clear-sans ttf-fira-mono ttf-monaco
