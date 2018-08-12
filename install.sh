@@ -123,7 +123,7 @@ pacman_packages+=( ttf-croscore ttf-droid ttf-roboto )
 pacman_packages+=( adobe-source-code-pro-fonts adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts )
 
 # Install bitmap fonts
-aur_packages+=( dina-font terminus-font tamsyn-font artwiz-fonts )
+pacman_packages+=( dina-font terminus-font tamsyn-font artwiz-fonts )
 
 # Install admin tools
 pacman_packages+=( sudo pacman-contrib pacmatic git zsh grml-zsh-config tmux openssh ntfs-3g sysstat ripgrep tree )
