@@ -135,7 +135,7 @@ pacman_packages+=( ifplugd wpa_actiond wpa_supplicant syncthing )
 pacman_packages+=( slock dmenu libnotify dunst numix-gtk-theme )
 
 # Install dev tools
-pacman_packages+=( vim emacs stow )
+pacman_packages+=( vim emacs stow editorconfig-core-c)
 
 # Work tools
 pacman_packages+=( nodejs npm rustup )
