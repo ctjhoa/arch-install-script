@@ -132,7 +132,7 @@ pacman_packages+=( sudo pacman-contrib pacmatic git zsh grml-zsh-config tmux ope
 pacman_packages+=( ifplugd wpa_actiond wpa_supplicant syncthing )
 
 # Install window manager
-pacman_packages+=( slock dmenu libnotify dunst numix-gtk-theme )
+pacman_packages+=( slock dmenu libnotify dunst arc-gtk-theme arc-icon-theme papirus-icon-theme )
 
 # Install dev tools
 pacman_packages+=( vim emacs stow editorconfig-core-c)

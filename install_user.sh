@@ -64,9 +64,6 @@ aur_packages+=( compton-git redshift-minimal )
 # Install more fonts
 # aur_packages+=( ttf-lato ttf-paratype ttf-clear-sans ttf-fira-mono ttf-monaco )
 
-# Install theme
-aur_packages+=( moka-icon-theme-git )
-
 # Install others
 aur_packages+=( libreoffice-extension-languagetool )
 
