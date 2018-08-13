@@ -138,7 +138,7 @@ pacman_packages+=( slock dmenu libnotify dunst arc-gtk-theme arc-icon-theme papi
 pacman_packages+=( vim emacs stow editorconfig-core-c )
 
 # Work tools
-pacman_packages+=( nodejs npm rustup )
+pacman_packages+=( nodejs npm rustup optipng )
 
 # Install audio
 pacman_packages+=( alsa-utils pulseaudio )
