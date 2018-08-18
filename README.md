@@ -44,7 +44,7 @@ Full guide is here https://wiki.archlinux.org/index.php/installation_guide
 
 1. `loadkeys fr`
 2. `timedatectl set-ntp true`
-3. `wifi-menu`
+3. `wifi-menu -o`
 4. `fdisk /dev/sda`
     1. New `512M` `EFI System` -> `mkfs.fat -F32 /dev/sda1`
     2. New `2G` `Linux Swap` -> `mkswap /dev/sda2 && swapon /dev/sda2`
