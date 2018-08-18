@@ -51,7 +51,7 @@ Full guide is here https://wiki.archlinux.org/index.php/installation_guide
     3. New `Linux filesystem` -> `mkfs.ext4 /dev/sda3`
 5. `mount /dev/sda3 /mnt`
 6. `mount /dev/sda1 /mnt/boot`
-7. `pacstrap /mnt base base-devel dialog wpa_supplicant intel-ucode git`
+7. `pacstrap /mnt base base-devel dialog wpa_supplicant intel-ucode git mesa`
 8. `genfstab -U /mnt >> /mnt/etc/fstab`
 9. `arch-chroot /mnt`
 10. `ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime`
