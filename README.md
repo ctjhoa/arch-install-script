@@ -3,6 +3,15 @@ arch-install-script
 
 My archlinux install script
 
+## Usage
+
+```bash
+$ git clone https://github.com/ctjhoa/arch-install-script
+$ cd arch-install-script
+$ cp install.conf.sample install.conf # then edit it
+$ ./install.sh
+```
+
 ## Additional config
 
 - Touchpad
