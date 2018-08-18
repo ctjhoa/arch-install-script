@@ -12,15 +12,15 @@ cd dotfiles
 ./install.sh
 cd -
 
-# Dwm (Dynamic Window Manager - suckless)
-git clone git@github.com:ctjhoa/dotfiles.git || git clone https://github.com/ctjhoa/dwm.git
-cd dwm
-./install.sh
-cd -
-
 # St (Simple terminal - suckless)
 git clone git@github.com:ctjhoa/st.git || git clone https://github.com/ctjhoa/st.git
 cd st
+./install.sh
+cd -
+
+# Dwm (Dynamic Window Manager - suckless)
+git clone git@github.com:ctjhoa/dotfiles.git || git clone https://github.com/ctjhoa/dwm.git
+cd dwm
 ./install.sh
 cd -
 
