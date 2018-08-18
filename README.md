@@ -8,9 +8,9 @@ My archlinux install script
 ```bash
 $ git clone https://github.com/ctjhoa/arch-install-script
 $ cd arch-install-script
-$ cp install.conf.sample install.conf # then edit it
 $ ./install.sh
 ```
+NOTE: You can automate config with `cp install.conf.sample install.conf` then edit it
 
 ## Additional config
 
