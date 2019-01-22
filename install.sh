@@ -145,7 +145,7 @@ pacman_packages+=( alsa-utils pulseaudio )
 
 # Install useful apps
 pacman_packages+=( keepass mpv vlc gimp firefox chromium scribus rtorrent weechat scrot feh )
-pacman_packages+=( libreoffice-fresh thunar lxappearance redshift )
+pacman_packages+=( libreoffice-fresh thunar lxappearance redshift unrar )
 
 pacman --noconfirm --needed -S  ${pacman_packages[@]}
 
