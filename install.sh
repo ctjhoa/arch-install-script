@@ -144,7 +144,7 @@ pacman_packages+=( nodejs npm rustup optipng )
 pacman_packages+=( alsa-utils pulseaudio )
 
 # Install useful apps
-pacman_packages+=( keepass mpv vlc gimp firefox chromium scribus rtorrent weechat scrot feh )
+pacman_packages+=( keepass mpv vlc gimp firefox chromium scribus rtorrent scrot feh )
 pacman_packages+=( libreoffice-fresh thunar lxappearance redshift unrar )
 
 pacman --noconfirm --needed -S  ${pacman_packages[@]}
