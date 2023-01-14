@@ -34,13 +34,27 @@ EndSection
 
 ### Flash arch on a USB key
 
-https://wiki.archlinux.org/index.php/USB_flash_installation_media
+https://wiki.archlinux.org/title/USB_flash_installation_medium
 
 ### Install arch
 
 The following is just a simplified version of arch installation guide for my personal usage.
 
-Full guide is here https://wiki.archlinux.org/index.php/installation_guide
+Full guide is here https://wiki.archlinux.org/title/Installation_guide
+
+Note: Do not create boot partition if Windows is already installed (EFI partition already exists).
+
+Useful pages:
+- https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS
+- https://wiki.archlinux.org/title/Dual_boot_with_Windows
+- https://wiki.archlinux.org/title/System_time#Time_standard
+- https://wiki.archlinux.org/title/Microcode#systemd-boot
+- https://wiki.archlinux.org/title/Systemd-boot#pacman_hook
+- https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Helper_scripts
+
+PS: https://wiki.archlinux.org/title/archinstall could be an alternative in the future
+
+Global steps:
 
 1. `loadkeys fr`
 2. `timedatectl set-ntp true`
