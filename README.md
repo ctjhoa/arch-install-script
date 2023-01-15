@@ -51,6 +51,7 @@ Useful pages:
 - https://wiki.archlinux.org/title/Microcode#systemd-boot
 - https://wiki.archlinux.org/title/Systemd-boot#pacman_hook
 - https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Helper_scripts
+- https://wiki.archlinux.org/title/iwd
 
 PS: https://wiki.archlinux.org/title/archinstall could be an alternative in the future
 
@@ -65,7 +66,7 @@ Global steps:
     3. New `Linux filesystem` -> `mkfs.ext4 /dev/sda3`
 5. `mount /dev/sda3 /mnt`
 6. `mount /dev/sda1 /mnt/boot`
-7. `pacstrap /mnt base base-devel dialog wpa_supplicant intel-ucode git mesa`
+7. `pacstrap /mnt base base-devel iwd intel-ucode git mesa`
 8. `genfstab -U /mnt >> /mnt/etc/fstab`
 9. `arch-chroot /mnt`
 10. `ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime`
