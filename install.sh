@@ -96,6 +96,9 @@ pacman --noconfirm -Syu haveged
 systemctl --no-ask-password start haveged
 systemctl --no-ask-password enable haveged
 
+systemctl --no-ask-password start systemd-boot-update.service
+systemctl --no-ask-password enable systemd-boot-update.service
+
 echo "
 ###############################################################################
 # Install part
