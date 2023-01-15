@@ -52,6 +52,7 @@ Useful pages:
 - https://wiki.archlinux.org/title/Systemd-boot#pacman_hook
 - https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Helper_scripts
 - https://wiki.archlinux.org/title/iwd
+- https://wiki.archlinux.org/title/systemd-resolved#DNS
 
 PS: https://wiki.archlinux.org/title/archinstall could be an alternative in the future
 
