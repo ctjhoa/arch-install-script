@@ -132,7 +132,7 @@ pacman_packages+=( sudo man pacman-contrib pacmatic git zsh grml-zsh-config tmux
 pacman_packages+=( ripgrep exa fd bat dust alacritty )
 
 # Install network tools
-pacman_packages+=( ifplugd wpa_supplicant syncthing )
+pacman_packages+=( ifplugd syncthing )
 
 # Install window manager
 pacman_packages+=( slock dmenu libnotify dunst arc-gtk-theme arc-icon-theme papirus-icon-theme )
