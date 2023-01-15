@@ -152,10 +152,6 @@ pacman_packages+=( libreoffice-fresh thunar lxappearance redshift unrar )
 
 pacman --noconfirm --needed -S  ${pacman_packages[@]}
 
-# Better fonts rendering
-ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
-ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
-
 chsh -s /bin/zsh
 
 # Install vbox guest addition
