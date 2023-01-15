@@ -157,6 +157,8 @@ pacman --noconfirm --needed -S  ${pacman_packages[@]}
 
 chsh -s /bin/zsh
 
+rustup default stable
+
 # Install vbox guest addition
 if [ "$vbox_install" == "yes" ]; then
 pacman --noconfirm -S virtualbox-guest-modules
