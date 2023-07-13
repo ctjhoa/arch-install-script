@@ -126,10 +126,10 @@ pacman_packages+=( ttf-croscore ttf-droid ttf-roboto )
 pacman_packages+=( adobe-source-code-pro-fonts adobe-source-sans-pro-fonts adobe-source-serif-pro-fonts )
 
 # Install bitmap fonts
-pacman_packages+=( dina-font terminus-font tamsyn-font )
+pacman_packages+=( terminus-font )
 
 # Install admin tools
-pacman_packages+=( sudo man pacman-contrib pacmatic git zsh grml-zsh-config tmux openssh sysstat tree jq htop )
+pacman_packages+=( sudo man pacman-contrib git zsh grml-zsh-config tmux openssh sysstat tree jq htop )
 
 # Install rust admin tools
 pacman_packages+=( ripgrep exa fd bat dust alacritty )
