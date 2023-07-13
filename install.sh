@@ -141,13 +141,13 @@ pacman_packages+=( ifplugd syncthing )
 pacman_packages+=( slock dmenu libnotify dunst arc-gtk-theme arc-icon-theme papirus-icon-theme )
 
 # Install dev tools
-pacman_packages+=( vim emacs-nativecomp stow editorconfig-core-c )
+pacman_packages+=( vim emacs-nativecomp stow editorconfig-core-c patch make )
 
 # Work tools
 pacman_packages+=( nodejs npm typescript-language-server rustup optipng go )
 
 # Install audio
-pacman_packages+=( alsa-utils pulseaudio )
+pacman_packages+=( alsa-utils pipewire pipewire-audio pipewire-alsa pipewire-pulse )
 
 # Install useful apps
 pacman_packages+=( keepass mpv vlc gimp firefox chromium scribus rtorrent scrot feh mupdf )
