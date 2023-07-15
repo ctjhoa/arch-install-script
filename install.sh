@@ -141,7 +141,7 @@ pacman_packages+=( ifplugd syncthing )
 pacman_packages+=( slock dmenu libnotify dunst arc-gtk-theme arc-icon-theme papirus-icon-theme )
 
 # Install dev tools
-pacman_packages+=( vim emacs-nativecomp stow editorconfig-core-c patch make pkgconf )
+pacman_packages+=( vim emacs-nativecomp stow editorconfig-core-c patch make pkgconf devtools base-devel )
 
 # Work tools
 pacman_packages+=( nodejs npm typescript-language-server rustup optipng go )
