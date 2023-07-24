@@ -151,7 +151,7 @@ pacman_packages+=( alsa-utils pipewire pipewire-audio pipewire-alsa pipewire-pul
 
 # Install useful apps
 pacman_packages+=( keepass mpv vlc gimp firefox chromium scribus rtorrent scrot feh mupdf )
-pacman_packages+=( libreoffice-fresh thunar lxappearance redshift unrar )
+pacman_packages+=( libreoffice-fresh thunar lxappearance redshift unrar unzip )
 
 pacman --noconfirm --needed -S  ${pacman_packages[@]}
 
