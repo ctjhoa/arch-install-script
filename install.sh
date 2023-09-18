@@ -147,7 +147,7 @@ pacman_packages+=( vim emacs-nativecomp stow editorconfig-core-c patch make pkgc
 pacman_packages+=( nodejs npm typescript-language-server rustup optipng go )
 
 # Install audio
-pacman_packages+=( alsa-utils pipewire pipewire-audio pipewire-alsa pipewire-pulse )
+pacman_packages+=( alsa-utils pipewire pipewire-audio pipewire-alsa pipewire-pulse pavucontrol )
 
 # Install useful apps
 pacman_packages+=( keepass mpv vlc gimp firefox chromium scribus rtorrent scrot feh mupdf )
