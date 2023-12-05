@@ -132,7 +132,7 @@ pacman_packages+=( terminus-font )
 pacman_packages+=( sudo man pacman-contrib git zsh grml-zsh-config tmux openssh sysstat tree jq htop )
 
 # Install rust admin tools
-pacman_packages+=( ripgrep exa fd bat dust alacritty zenith )
+pacman_packages+=( ripgrep exa fd bat dust alacritty zenith bottom )
 
 # Install network tools
 pacman_packages+=( ifplugd syncthing )
