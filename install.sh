@@ -154,7 +154,7 @@ pacman_packages+=( keepass mpv vlc gimp firefox chromium scribus rtorrent scrot 
 pacman_packages+=( libreoffice-fresh thunar lxappearance redshift unrar unzip )
 
 # LSP
-pacman_packages+=( eslint-language-server tailwindcss-language-server typescript-language-server vue-language-server gopls )
+pacman_packages+=( eslint-language-server tailwindcss-language-server typescript-language-server vue-language-server gopls rust-analyzer )
 
 pacman --noconfirm --needed -S  ${pacman_packages[@]}
 
