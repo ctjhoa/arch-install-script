@@ -153,6 +153,9 @@ pacman_packages+=( alsa-utils pipewire pipewire-audio pipewire-alsa pipewire-pul
 pacman_packages+=( keepass mpv vlc gimp firefox chromium scribus rtorrent scrot feh mupdf )
 pacman_packages+=( libreoffice-fresh thunar lxappearance redshift unrar unzip )
 
+# LSP
+pacman_packages+=( eslint-language-server tailwindcss-language-server typescript-language-server vue-language-server )
+
 pacman --noconfirm --needed -S  ${pacman_packages[@]}
 
 chsh -s /bin/zsh
