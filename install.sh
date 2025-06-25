@@ -129,7 +129,7 @@ pacman_packages+=( adobe-source-code-pro-fonts adobe-source-sans-pro-fonts adobe
 pacman_packages+=( terminus-font )
 
 # Install admin tools
-pacman_packages+=( sudo man pacman-contrib git zsh grml-zsh-config tmux openssh sysstat tree jq htop )
+pacman_packages+=( sudo man pacman-contrib git zsh grml-zsh-config tmux openssh sysstat tree jq htop ncdu )
 
 # Install rust admin tools
 pacman_packages+=( ripgrep exa fd bat dust alacritty zenith bottom )
