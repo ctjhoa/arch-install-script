@@ -54,7 +54,7 @@ function install_aur {
 }
 
 # Install AUR packages
-install_aur yay libreoffice-extension-languagetool
+install_aur yay libreoffice-extension-languagetool arch-update
 
 # Install more fonts
 # ttf-lato ttf-paratype ttf-clear-sans ttf-fira-mono ttf-monaco dina-font tamsyn-font
